@@ -1,0 +1,31 @@
+digraph HeapFunctionCalls {
+    rankdir=LR;
+    node [shape=box, style=filled, fontname=Helvetica];
+
+    // Public methods (light blue)
+    new [color=lightblue];
+    insert [color=lightblue];
+    extract_max [color=lightblue];
+    change_d [color=lightblue];
+    print [color=lightblue];
+
+    // Private methods (light gray)
+    build_heap [color=lightgray];
+    heapify_down [color=lightgray];
+    heapify_up [color=lightgray];
+    get_parent [color=lightgray];
+    get_n_son [color=lightgray];
+
+    // Function calls
+    new -> build_heap;
+    insert -> heapify_up;
+    extract_max -> heapify_down;
+    change_d -> build_heap;
+    print -> get_parent;
+
+    build_heap -> heapify_down;
+    heapify_down -> get_n_son;
+    heapify_down -> heapify_down;
+    heapify_up -> get_parent;
+    heapify_up -> heapify_up;
+}
